@@ -1,0 +1,20 @@
+[submodule "pinyin-data"]
+	path = pinyin-data
+	url = git@github.com:mozillazg/pinyin-data.git
+	shallow = true
+[submodule "98wubi-tables"]
+	path = 98wubi-tables
+	url = git@github.com:yanhuacuo/98wubi-tables.git
+	shallow = true
+[submodule "rime-shuangpin-fuzhuma"]
+	path = rime-shuangpin-fuzhuma
+	url = git@github.com:gaboolic/rime-shuangpin-fuzhuma.git
+	shallow = true
+[submodule "rime-bopomofo"]
+	path = rime-bopomofo
+	url = git@github.com:rime/rime-bopomofo.git
+	shallow = true
+[submodule "hanzi-chars"]
+	path = hanzi-chars
+	url = https://gh-proxy.ygxz.in/https://github.com/zispace/hanzi-chars.git
+	shallow = true

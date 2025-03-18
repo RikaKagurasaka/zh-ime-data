@@ -1,0 +1,17 @@
+[project]
+name = "zh-ime-data"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "notebook>=7.3.3",
+    "opencc>=1.1.9",
+    "pandas>=2.2.3",
+    "pip>=25.0.1",
+    "pyaml>=25.1.0",
+]
+
+[tool.uv]
+cache-dir = "/data/.uv_cache"

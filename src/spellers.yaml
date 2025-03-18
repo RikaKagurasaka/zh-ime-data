@@ -1,0 +1,240 @@
+pinyin2terra:
+  - xform/^(.*[āōēīūǖ].*)$/$1I/
+  - xform/^(.*[áóéíúǘḿ].*)$/$1J/
+  - xform/^(.*[ǎǒěǐǔǚ].*)$/$1K/
+  - xform/^(.*[àòèìùǜ].*)$/$1L/
+  - xform/[āáǎà]/a/
+  - xform/[ōóǒò]/o/
+  - xform/[ēéěè]/e/
+  - xform/[īíǐì]/i/
+  - xform/[ūúǔù]/u/
+  - xform/[ǖǘǚǜü]/v/
+  - xform/[ḿ]/mu/
+  - xlit|IJKL|1234|
+  - xform/(\D)$/$1V/
+  - xform/V/5/
+
+terra2bopomofo:
+  - xform/^m(\d)$/mu$1/ # 呣
+  - xform/^r5$/er5/ # 〜兒
+  - xform/iu/iou/
+  - xform/ui/uei/
+  - xform/ong/ung/
+  - xform/^yi?/i/
+  - xform/^wu?/u/
+  - xform/iu/v/
+  - xform/^([jqx])u/$1v/
+  - xform/([iuv])n/$1en/
+  - xform/^zhi?/Z/
+  - xform/^chi?/C/
+  - xform/^shi?/S/
+  - xform/^([zcsr])i/$1/
+  - xform/ai/A/
+  - xform/ei/I/
+  - xform/ao/O/
+  - xform/ou/U/
+  - xform/ang/K/
+  - xform/eng/G/
+  - xform/an/M/
+  - xform/en/N/
+  - xform/er/R/
+  - xform/eh/E/
+  - xform/([iv])e/$1E/
+  - "xlit|bpmfdtnlgkhjqxZCSrzcsiuvaoeEAIOUMNKGR12345|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347|"
+  - "xlit|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347'|ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ ˊˇˋ˙ |"
+  - xform/ //
+
+letters2cj:
+  - xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|
+
+terra_drop_tone:
+  - xform/\d//
+
+zrm:
+  - xform/^([aoe])(ng)?$/$1$1$2/
+  - xform/^(\w+?)iu$/$1Ⓠ/
+  - xform/^(\w+?)[uv]an$/$1Ⓡ/
+  - xform/^(\w+?)[uv]e$/$1Ⓣ/
+  - xform/^(\w+?)ing$/$1Ⓨ/
+  - xform/^(\w+?)uai$/$1Ⓨ/
+  - xform/^(\w+?)uo$/$1Ⓞ/
+  - xform/^(\w+?)[uv]n$/$1Ⓟ/
+  - xform/^(\w+?)i?ong$/$1Ⓢ/
+  - xform/^(\w+?)[iu]ang$/$1Ⓓ/
+  - xform/^(\w+?)en$/$1Ⓕ/
+  - xform/^(\w+?)eng$/$1Ⓖ/
+  - xform/^(\w+?)ang$/$1Ⓗ/
+  - xform/^(\w+?)ian$/$1Ⓜ/
+  - xform/^(\w+?)an$/$1Ⓙ/
+  - xform/^(\w+?)iao$/$1Ⓒ/
+  - xform/^(\w+?)ao$/$1Ⓚ/
+  - xform/^(\w+?)ai$/$1Ⓛ/
+  - xform/^(\w+?)ei$/$1Ⓩ/
+  - xform/^(\w+?)ie$/$1Ⓧ/
+  - xform/^(\w+?)ui$/$1Ⓥ/
+  - xform/^(\w+?)ou$/$1Ⓑ/
+  - xform/^(\w+?)in$/$1Ⓝ/
+  - xform/^(\w+?)[iu]a$/$1Ⓦ/
+  - xform/^sh/Ⓤ/
+  - xform/^ch/Ⓘ/
+  - xform/^zh/Ⓥ/
+  - xlit|ⓆⓌⓇⓉⓎⓊⒾⓄⓅⓈⒹⒻⒼⒽⓂⒿⒸⓀⓁⓏⓍⓋⒷⓃ|qwrtyuiopsdfghmjcklzxvbn|
+
+flypy:
+  - xform/^([aoe])(ng)?$/$1$1$2/
+  - xform/^(\w+?)iu/$1Ⓠ/
+  - xform/^(\w+?)ei/$1Ⓦ/
+  - xform/^(\w+?)uan/$1Ⓡ/
+  - xform/^(\w+?)[uv]e/$1Ⓣ/
+  - xform/^(\w+?)un/$1Ⓨ/
+  - xform/^(\w+?)uo/$1Ⓞ/
+  - xform/^(\w+?)ie/$1Ⓟ/
+  - xform/^(\w+?)i?ong/$1Ⓢ/
+  - xform/^(\w+?)ing/$1Ⓚ/
+  - xform/^(\w+?)uai/$1Ⓚ/
+  - xform/^(\w+?)ai/$1Ⓓ/
+  - xform/^(\w+?)eng/$1Ⓖ/
+  - xform/^(\w+?)en/$1Ⓕ/
+  - xform/^(\w+?)[iu]ang/$1Ⓛ/
+  - xform/^(\w+?)ang/$1Ⓗ/
+  - xform/^(\w+?)ian/$1Ⓜ/
+  - xform/^(\w+?)an/$1Ⓙ/
+  - xform/^(\w+?)ou/$1Ⓩ/
+  - xform/^(\w+?)iao/$1Ⓝ/
+  - xform/^(\w+?)[iu]a/$1Ⓧ/
+  - xform/^(\w+?)ao/$1Ⓒ/
+  - xform/^(\w+?)ui/$1Ⓥ/
+  - xform/^(\w+?)in/$1Ⓑ/
+  - xform/^sh/Ⓤ/
+  - xform/^ch/Ⓘ/
+  - xform/^zh/Ⓥ/
+  - xlit|ⓆⓌⓇⓉⓎⓊⒾⓄⓅⓈⒹⒻⒼⒽⒿⓀⓁⓏⓍⒸⓋⒷⓃⓂ|qwrtyuiopsdfghjklzxcvbnm|
+
+ms:
+  - xform/^([aoe].*)$/o$1/
+  - xform/^([ae])(.*)$/$1$1$2/
+  - xform/^(\w+?)iu/$1Ⓠ/
+  - xform/^(\w+?)er/$1Ⓡ/
+  - xform/^(\w+?)[uv]an/$1Ⓡ/
+  - xform/^(\w+?)[uv]e/$1Ⓣ/
+  - xform/^(\w+?)v/$1Ⓨ/
+  - xform/^(\w+?)uai/$1Ⓨ/
+  - xform/^(\w+?)uo/$1Ⓞ/
+  - xform/^(\w+?)[uv]n/$1Ⓟ/
+  - xform/^(\w+?)i?ong/$1Ⓢ/
+  - xform/^(\w+?)[iu]ang/$1Ⓓ/
+  - xform/^(\w+?)eng/$1Ⓖ/
+  - xform/^(\w+?)en/$1Ⓕ/
+  - xform/^(\w+?)ang/$1Ⓗ/
+  - xform/^(\w+?)ian/$1Ⓜ/
+  - xform/^(\w+?)an/$1Ⓙ/
+  - xform/^(\w+?)iao/$1Ⓒ/
+  - xform/^(\w+?)ao/$1Ⓚ/
+  - xform/^(\w+?)ai/$1Ⓛ/
+  - xform/^(\w+?)ei/$1Ⓩ/
+  - xform/^(\w+?)ie/$1Ⓧ/
+  - xform/^(\w+?)ui/$1Ⓥ/
+  - xform/^(\w+?)ou/$1Ⓑ/
+  - xform/^(\w+?)ing/$1;/
+  - xform/^(\w+?)in/$1Ⓝ/
+  - xform/^(\w+?)[iu]a/$1Ⓦ/
+  - xform/^sh/Ⓤ/
+  - xform/^ch/Ⓘ/
+  - xform/^zh/Ⓥ/
+  - xlit|ⓆⓌⓇⓉⓎⓊⒾⓄⓅⓈⒹⒻⒼⒽⓂⒿⒸⓀⓁⓏⓍⓋⒷⓃ|qwrtyuiopsdfghmjcklzxvbn|
+
+sogou:
+  - xform/^([aoe].*)$/o$1/
+  - xform/^([ae])(.*)$/$1$1$2/
+  - xform/^(\w+?)iu$/$1Ⓠ/
+  - xform/^(\w+?)[iu]a$/$1Ⓦ/
+  - xform/^(\w+?)er$/$1Ⓡ/
+  - xform/^(\w+?)[uv]an$/$1Ⓡ/
+  - xform/^(\w+?)[uv]e$/$1Ⓣ/
+  - xform/^(\w+?)v$/$1Ⓨ/
+  - xform/^(\w+?)uai$/$1Ⓨ/
+  - xform/^(\w+?)uo$/$1Ⓞ/
+  - xform/^(\w+?)[uv]n$/$1Ⓟ/
+  - xform/^(\w+?)i?ong$/$1Ⓢ/
+  - xform/^(\w+?)[iu]ang$/$1Ⓓ/
+  - xform/^(\w+?)en$/$1Ⓕ/
+  - xform/^(\w+?)eng$/$1Ⓖ/
+  - xform/^(\w+?)ang$/$1Ⓗ/
+  - xform/^(\w+?)ian$/$1Ⓜ/
+  - xform/^(\w+?)an$/$1Ⓙ/
+  - xform/^(\w+?)iao$/$1Ⓒ/
+  - xform/^(\w+?)ao$/$1Ⓚ/
+  - xform/^(\w+?)ai$/$1Ⓛ/
+  - xform/^(\w+?)ei$/$1Ⓩ/
+  - xform/^(\w+?)ie$/$1Ⓧ/
+  - xform/^(\w+?)ui$/$1Ⓥ/
+  - xform/^(\w+?)ou$/$1Ⓑ/
+  - xform/^(\w+?)in$/$1Ⓝ/
+  - xform/^(\w+?)ing$/$1;/
+  - xform/^sh/Ⓤ/
+  - xform/^ch/Ⓘ/
+  - xform/^zh/Ⓥ/
+  - xlit|ⓆⓌⓇⓉⓎⓊⒾⓄⓅⓈⒹⒻⒼⒽⓂⒿⒸⓀⓁⓏⓍⓋⒷⓃ|qwrtyuiopsdfghmjcklzxvbn|
+
+abc:
+  - xform/^([aoe].*)$/o$1/
+  - xform/^(\w+?)ei$/$1Ⓠ/
+  - xform/^(\w+?)ian$/$1Ⓦ/
+  - xform/^(\w+?)er$/$1Ⓡ/
+  - xform/^(\w+?)iu$/$1Ⓡ/
+  - xform/^(\w+?)[iu]ang$/$1Ⓣ/
+  - xform/^(\w+?)ing$/$1Ⓨ/
+  - xform/^(\w+?)uo$/$1Ⓞ/
+  - xform/^(\w+?)uan$/$1Ⓟ/
+  - xform/^(\w+?)i?ong$/$1Ⓢ/
+  - xform/^(\w+?)[iu]a$/$1Ⓓ/
+  - xform/^(\w+?)en$/$1Ⓕ/
+  - xform/^(\w+?)eng$/$1Ⓖ/
+  - xform/^(\w+?)ang$/$1Ⓗ/
+  - xform/^(\w+?)an$/$1Ⓙ/
+  - xform/^(\w+?)iao$/$1Ⓩ/
+  - xform/^(\w+?)ao$/$1Ⓚ/
+  - xform/^(\w+?)in$/$1Ⓒ/
+  - xform/^(\w+?)uai$/$1Ⓒ/
+  - xform/^(\w+?)ai$/$1Ⓛ/
+  - xform/^(\w+?)ie$/$1Ⓧ/
+  - xform/^(\w+?)ou$/$1Ⓑ/
+  - xform/^(\w+?)un$/$1Ⓝ/
+  - xform/^(\w+?)[uv]e$/$1Ⓜ/
+  - xform/^(\w+?)ui$/$1Ⓜ/
+  - xform/^zh/Ⓐ/
+  - xform/^ch/Ⓔ/
+  - xform/^sh/Ⓥ/
+  - xlit|ⓆⓌⒺⓇⓉⓎⓄⓅⒶⓈⒹⒻⒼⒽⒿⓀⓁⓏⓍⒸⓋⒷⓃⓂ|qwertyopasdfghjklzxcvbnm|
+
+ziguang:
+  - xform/^([aoe].*)$/O$1/
+  - xform/^(\w+?)en$/$1Ⓦ/
+  - xform/^(\w+?)eng$/$1Ⓣ/
+  - xform/^(\w+?)in$|uai$/$1Ⓨ/
+  - xform/^(\w+?)uo$/$1Ⓞ/
+  - xform/^(\w+?)ai$/$1Ⓟ/
+  - xform/^(\w+?)[iu]ang$/$1Ⓖ/
+  - xform/^(\w+?)ang$/$1Ⓢ/
+  - xform/^(\w+?)ie$/$1Ⓓ/
+  - xform/^(\w+?)ian$/$1Ⓕ/
+  - xform/^(\w+?)i?ong$/$1Ⓗ/
+  - xform/^(\w+?)er$/$1Ⓙ/
+  - xform/^(\w+?)iu$/$1Ⓙ/
+  - xform/^(\w+?)ei$/$1Ⓚ/
+  - xform/^(\w+?)uan$/$1Ⓛ/
+  - xform/^(\w+?)ing$/$1;/
+  - xform/^(\w+?)ou$/$1Ⓩ/
+  - xform/^(\w+?)[iu]a$/$1Ⓧ/
+  - xform/^(\w+?)iao$/$1Ⓑ/
+  - xform/^(\w+?)ue$/$1Ⓝ/
+  - xform/^(\w+?)ui$/$1Ⓝ/
+  - xform/^(\w+?)ve$/$1Ⓝ/
+  - xform/^(\w+?)un$/$1Ⓜ/
+  - xform/^(\w+?)ao$/$1Ⓠ/
+  - xform/^(\w+?)an$/$1Ⓡ/
+  - xform/O/Ⓞ/
+  - xform/^zh/Ⓤ/
+  - xform/^sh/Ⓘ/
+  - xform/^ch/Ⓐ/
+  - xlit|ⓌⓉⓎⓊⒾⓄⓅⒶⒼⓈⒹⒻⒽⒿⓀⓁⓏⓍⒷⓃⓂⓆⓇ|wtyuiopagsdfhjklzxbnmqr|
