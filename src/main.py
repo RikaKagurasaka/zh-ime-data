@@ -89,3 +89,10 @@ import gzip
 with gzip.open(MERGED_DICT.with_suffix(".gz"), "wt") as f:
     slim_merged.to_csv(f, index=False)
 # %%
+import shutil
+
+shutil.copy(
+    MERGED_DICT.with_suffix(".gz"),
+    MERGED_DICT.parent.parent / "public" / MERGED_DICT.with_suffix(".gz").name,
+)
+# %%
