@@ -1,5 +1,5 @@
 # %%
-
+import re
 from paths import *
 import pandas as pd
 
@@ -19,12 +19,11 @@ def find_header_lines_cnt(path: Path):
 
 def load_cangjie():
     """Load and process Cangjie dictionary data"""
-    cj_header_lines_cnt = find_header_lines_cnt(DICT_CANGJIE)
     cj_df = pd.read_csv(
         DICT_CANGJIE,
         sep="\t",
         header=None,
-        skiprows=cj_header_lines_cnt,
+        skiprows=10,
         names=range(3),
         comment="#",
     )
@@ -33,6 +32,10 @@ def load_cangjie():
     cj_df.columns = ["char", "code"]
     cj_df = cj_df[cj_df["code"].str.contains("z") == 0]
     cj_df = cj_df[~cj_df["code"].str.startswith("yyy")]
+    # 由于仓颉码的x在最前面的时候写作「重」，所以为了区分，把在最前面的x替换成z
+    cj_df["code"] = cj_df["code"].apply(
+        lambda x: re.sub(r"^x+", lambda m: "z" * len(m.group(0)), x)
+    )
     return cj_df
 
 

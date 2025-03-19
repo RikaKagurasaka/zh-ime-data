@@ -21,3 +21,6 @@
 [submodule "wubi-convert-cpp"]
 	path = wubi-convert-cpp
 	url = git@github.com:lam126/wubi-convert-cpp.git
+[submodule "Cangjie5"]
+	path = Cangjie5
+	url = git@github.com:Jackchows/Cangjie5.git

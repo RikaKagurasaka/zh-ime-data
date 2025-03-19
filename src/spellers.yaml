@@ -44,7 +44,7 @@ terra2bopomofo:
   - xform/ //
 
 letters2cj:
-  - xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|
+  - xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重|
 
 terra_drop_tone:
   - xform/\d//
