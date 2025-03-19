@@ -18,3 +18,6 @@
 	path = hanzi-chars
 	url = https://gh-proxy.ygxz.in/https://github.com/zispace/hanzi-chars.git
 	shallow = true
+[submodule "wubi-convert-cpp"]
+	path = wubi-convert-cpp
+	url = https://gh-proxy.ygxz.in/https://github.com/lam126/wubi-convert-cpp.git
