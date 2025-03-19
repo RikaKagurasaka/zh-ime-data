@@ -115,7 +115,7 @@ def parse_xform_rule(rule: str) -> Tuple[str, str]:
     replacement = parts[2]
 
     # Convert $1, $2, etc. to \1, \2, etc.
-    replacement = re.sub(r"\$(\d+)", r"\\1", replacement)
+    replacement = re.sub(r"\$(\d+)", r"\\\1", replacement)
 
     return pattern, replacement
 

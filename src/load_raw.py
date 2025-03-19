@@ -36,7 +36,7 @@ def load_cangjie():
     return cj_df
 
 
-def load_wubi():
+def load_wubi98():
     """Load and process Wubi98 dictionary data"""
     wubi_header_lines_cnt = find_header_lines_cnt(DICT_WUBI98)
     wubi_df = pd.read_csv(
@@ -51,8 +51,35 @@ def load_wubi():
     wubi_df = wubi_df[wubi_df[1].str.contains("z") == 0]
     wubi_df = wubi_df.iloc[:, :2]
     wubi_df.columns = ["char", "code"]
+    wubi_df["code"] = wubi_df["code"].str.split(",")
+    wubi_df["code"] = wubi_df["code"].apply(lambda x: sorted(x, key=lambda a: len(a)))
+    wubi_df = wubi_df.explode("code")
     wubi_df.drop_duplicates(inplace=True)
     return wubi_df
+
+
+# %%
+def load_wubi86():
+    """Load and process Wubi86 dictionary data"""
+    wubi_df = pd.read_csv(
+        DICT_WUBI86,
+        sep="\t",
+        header=None,
+        names=range(4),
+        comment="#",
+    )
+    wubi_df = wubi_df[wubi_df[1].str.len() == 1]
+    wubi_df = wubi_df[wubi_df[2].str.contains("z") == 0]
+    wubi_df = wubi_df.iloc[:, [1, 2]]
+    wubi_df.columns = ["char", "code"]
+    wubi_df["code"] = wubi_df["code"].str.split(",")
+    wubi_df["code"] = wubi_df["code"].apply(lambda x: sorted(x, key=lambda a: len(a)))
+    wubi_df = wubi_df.explode("code")
+    wubi_df.drop_duplicates(inplace=True)
+    return wubi_df
+
+
+# %%
 
 
 def load_pinyin():
@@ -101,14 +128,15 @@ def load_raw_data():
     """Load all raw dictionary data and return as a tuple of dataframes.
 
     Returns:
-        tuple: (cangjie_df, wubi_df, pinyin_df, moqi_df)
+        tuple: (cangjie_df, wubi98_df, wubi86_df, pinyin_df, moqi_df)
     """
     cj_df = load_cangjie()
-    wubi_df = load_wubi()
+    wubi98_df = load_wubi98()
+    wubi86_df = load_wubi86()
     pinyin_df = load_pinyin()
     moqi_df = load_moqi()
 
-    return cj_df, wubi_df, pinyin_df, moqi_df
+    return cj_df, wubi98_df, wubi86_df, pinyin_df, moqi_df
 
 
 # %%
