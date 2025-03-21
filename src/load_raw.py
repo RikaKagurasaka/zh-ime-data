@@ -141,6 +141,7 @@ def load_sijiao():
     sijiao_df.drop_duplicates(inplace=True)
     return sijiao_df
 
+
 def load_zhengma():
     """Load and process Zhengma dictionary data"""
     zhengma_df = pd.read_csv(
@@ -154,10 +155,10 @@ def load_zhengma():
     zhengma_df = zhengma_df[zhengma_df[0].str.len() == 1]
     zhengma_df = zhengma_df.iloc[:, [0, 1]]
     zhengma_df.columns = ["char", "code"]
-
+    zhengma_df.sort_values(by="code", key=lambda x: x.str.len(), inplace=True)
     return zhengma_df
 
-load_zhengma()
+
 # %%
 def load_raw_data():
     """Load all raw dictionary data and return as a tuple of dataframes.
