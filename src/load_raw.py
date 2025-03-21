@@ -61,7 +61,6 @@ def load_wubi98():
     return wubi_df
 
 
-# %%
 def load_wubi86():
     """Load and process Wubi86 dictionary data"""
     wubi_df = pd.read_csv(
@@ -80,9 +79,6 @@ def load_wubi86():
     wubi_df = wubi_df.explode("code")
     wubi_df.drop_duplicates(inplace=True)
     return wubi_df
-
-
-# %%
 
 
 def load_pinyin():
@@ -127,6 +123,42 @@ def load_moqi():
     return moqi_df
 
 
+# %%
+def load_sijiao():
+    """Load and process Sijiao dictionary data"""
+    sijiao_df = pd.read_csv(
+        DICT_SIJIAO,
+        sep="\t",
+        header=None,
+        skiprows=find_header_lines_cnt(DICT_SIJIAO),
+        names=range(3),
+        comment="#",
+    )
+    sijiao_df = sijiao_df[sijiao_df[0].str.len() == 1]
+    sijiao_df = sijiao_df.iloc[:, [0, 1]]
+    sijiao_df.columns = ["char", "code"]
+    sijiao_df["code"] = sijiao_df["code"].str.slice(5)
+    sijiao_df.drop_duplicates(inplace=True)
+    return sijiao_df
+
+def load_zhengma():
+    """Load and process Zhengma dictionary data"""
+    zhengma_df = pd.read_csv(
+        DICT_ZHENGMA,
+        sep="\t",
+        header=None,
+        skiprows=find_header_lines_cnt(DICT_ZHENGMA),
+        names=range(3),
+        comment="#",
+    )
+    zhengma_df = zhengma_df[zhengma_df[0].str.len() == 1]
+    zhengma_df = zhengma_df.iloc[:, [0, 1]]
+    zhengma_df.columns = ["char", "code"]
+
+    return zhengma_df
+
+load_zhengma()
+# %%
 def load_raw_data():
     """Load all raw dictionary data and return as a tuple of dataframes.
 
@@ -138,8 +170,10 @@ def load_raw_data():
     wubi86_df = load_wubi86()
     pinyin_df = load_pinyin()
     moqi_df = load_moqi()
+    sijiao_df = load_sijiao()
+    zhengma_df = load_zhengma()
 
-    return cj_df, wubi98_df, wubi86_df, pinyin_df, moqi_df
+    return cj_df, wubi98_df, wubi86_df, pinyin_df, moqi_df, sijiao_df, zhengma_df
 
 
 # %%

@@ -24,3 +24,6 @@
 [submodule "Cangjie5"]
 	path = Cangjie5
 	url = git@github.com:Jackchows/Cangjie5.git
+[submodule "rime-zong"]
+	path = rime-zong
+	url = git@github.com:zongxinbo/rime-zong.git
