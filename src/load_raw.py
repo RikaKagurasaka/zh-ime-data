@@ -160,7 +160,44 @@ def load_zhengma():
     zhengma_df = zhengma_df.iloc[:, [0, 1]]
     zhengma_df.columns = ["char", "code"]
     zhengma_df.sort_values(by="code", key=lambda x: x.str.len(), inplace=True)
+    zhengma_df.drop_duplicates(inplace=True)
     return zhengma_df
+
+
+def load_huma():
+    """Load and process Huma dictionary data"""
+    huma_df = pd.read_csv(
+        DICT_HUMA,
+        sep="\t",
+        header=None,
+        skiprows=find_header_lines_cnt(DICT_HUMA),
+        names=range(3),
+        comment="#",
+    )
+    huma_df = huma_df[huma_df[0].str.len() == 1]
+    huma_df = huma_df.iloc[:, [0, 1]]
+    huma_df.columns = ["char", "code"]
+    huma_df.sort_values(by="code", key=lambda x: x.str.len(), inplace=True)
+    huma_df.drop_duplicates(inplace=True)
+    return huma_df
+
+
+def load_xuma():
+    """Load and process XuMa dictionary data"""
+    xuma_df = pd.read_csv(
+        DICT_XUMA,
+        sep="\t",
+        header=None,
+        skiprows=find_header_lines_cnt(DICT_XUMA),
+        names=range(4),
+        comment="#",
+    )
+    xuma_df = xuma_df[xuma_df[0].str.len() == 1]
+    xuma_df = xuma_df.iloc[:, [0, 1]]
+    xuma_df.columns = ["char", "code"]
+    xuma_df.sort_values(by="code", key=lambda x: x.str.len(), inplace=True)
+    xuma_df.drop_duplicates(inplace=True)
+    return xuma_df
 
 
 # %%
@@ -177,8 +214,19 @@ def load_raw_data():
     moqi_df = load_moqi()
     sijiao_df = load_sijiao()
     zhengma_df = load_zhengma()
-
-    return cj_df, wubi98_df, wubi86_df, pinyin_df, moqi_df, sijiao_df, zhengma_df
+    huma_df = load_huma()
+    xuma_df = load_xuma()
+    return (
+        cj_df,
+        wubi98_df,
+        wubi86_df,
+        pinyin_df,
+        moqi_df,
+        sijiao_df,
+        zhengma_df,
+        huma_df,
+        xuma_df,
+    )
 
 
 # %%

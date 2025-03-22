@@ -27,3 +27,9 @@
 [submodule "rime-zong"]
 	path = rime-zong
 	url = git@github.com:zongxinbo/rime-zong.git
+[submodule "rime-huma"]
+	path = rime-huma
+	url = git@github.com:ywxt/rime-huma.git
+[submodule "rime-xuma"]
+	path = rime-xuma
+	url = git@github.com:Ace-Who/rime-xuma.git

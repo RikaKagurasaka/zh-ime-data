@@ -12,6 +12,8 @@
 | wubi86   | 五笔 86       |
 | zhengma  | 郑码          |
 | sijiao   | 四角号码      |
+| huma     | 虎码          |
+| xuma     | 徐码          |
 | terra    | 地球拼音      |
 | bopomofo | 注音          |
 | flypy    | 小鹤双拼      |

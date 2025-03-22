@@ -10,13 +10,25 @@ s2t = opencc.OpenCC("s2t.json")
 t2s = opencc.OpenCC("t2s.json")
 
 # %%
-cj_df, wubi98_df, wubi86_df, pinyin_df, moqi_df, sijiao_df, zhengma_df = load_raw_data()
+(
+    cj_df,
+    wubi98_df,
+    wubi86_df,
+    pinyin_df,
+    moqi_df,
+    sijiao_df,
+    zhengma_df,
+    huma_df,
+    xuma_df,
+) = load_raw_data()
 cj_df = cj_df.rename(columns={"code": "cj"})
 cj_df = apply_speller_rules(cj_df, "letters2cj", "cj")
 wubi98_df = wubi98_df.rename(columns={"code": "wubi98"})
 wubi86_df = wubi86_df.rename(columns={"code": "wubi86"})
 sijiao_df = sijiao_df.rename(columns={"code": "sijiao"})
 zhengma_df = zhengma_df.rename(columns={"code": "zhengma"})
+huma_df = huma_df.rename(columns={"code": "huma"})
+xuma_df = xuma_df.rename(columns={"code": "xuma"})
 # %%
 pron_df = pinyin_df.copy()
 pron_df = pron_df.rename(columns={"code": "pinyin"})
@@ -65,6 +77,8 @@ dfs = [
     wubi86_df,
     sijiao_df,
     zhengma_df,
+    huma_df,
+    xuma_df,
     pron_terra_df,
     pron_bopomofo_df,
     pron_flypy_df,
