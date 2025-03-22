@@ -10,6 +10,8 @@
 | cj       | 仓颉          |
 | wubi98   | 五笔 98       |
 | wubi86   | 五笔 86       |
+| zhengma  | 郑码          |
+| sijiao   | 四角号码      |
 | terra    | 地球拼音      |
 | bopomofo | 注音          |
 | flypy    | 小鹤双拼      |
@@ -22,3 +24,5 @@
 | xh_aux   | 小鹤辅助码    |
 | zrm_aux  | 自然码辅助码  |
 | lvl      | 通规字等级    |
+| cht      | 是繁体        |
+| chs      | 是简体        |

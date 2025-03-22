@@ -91,6 +91,7 @@ merged = reduce(
 lvl123 = load_hanzi_chars()
 slim_merged = merged[~merged["terra"].isna()]
 slim_merged = pd.merge(slim_merged, lvl123, on="char", how="left")
+
 # %%
 slim_merged["cht"] = (
     slim_merged["char"].apply(lambda c: s2t.convert(c) == c).astype(int)

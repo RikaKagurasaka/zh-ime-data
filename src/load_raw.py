@@ -2,6 +2,10 @@
 import re
 from paths import *
 import pandas as pd
+import opencc
+
+s2t = opencc.OpenCC("s2t.json")
+t2s = opencc.OpenCC("t2s.json")
 
 
 # %%
@@ -194,6 +198,10 @@ def load_hanzi_chars():
     lvl2["lvl"] = 2
     lvl3["lvl"] = 3
     lvl123 = pd.concat([lvl1, lvl2, lvl3])
+    lvl123cht = lvl123.copy()
+    lvl123cht["char"] = lvl123cht["char"].apply(lambda x: s2t.convert(x))
+    lvl123 = pd.concat([lvl123, lvl123cht])
+    lvl123.drop_duplicates(inplace=True)
     return lvl123
 
 
