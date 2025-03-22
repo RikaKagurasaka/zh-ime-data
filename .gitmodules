@@ -33,3 +33,6 @@
 [submodule "rime-xuma"]
 	path = rime-xuma
 	url = git@github.com:Ace-Who/rime-xuma.git
+[submodule "RIME-Liur2024"]
+	path = RIME-Liur2024
+	url = git@github.com:dasu88/RIME-Liur2024.git

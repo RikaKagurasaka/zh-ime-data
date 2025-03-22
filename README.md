@@ -14,6 +14,7 @@
 | sijiao   | 四角号码      |
 | huma     | 虎码          |
 | xuma     | 徐码          |
+| liur     | 嘸蝦米        |
 | terra    | 地球拼音      |
 | bopomofo | 注音          |
 | flypy    | 小鹤双拼      |

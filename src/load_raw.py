@@ -200,6 +200,31 @@ def load_xuma():
     return xuma_df
 
 
+def load_liur():
+    liur_dfs = [
+        pd.read_csv(
+            path,
+            sep="\t",
+            header=None,
+            names=range(3),
+            skiprows=find_header_lines_cnt(path),
+            comment="#",
+        )
+        for path in DICTS_LIUR
+    ]
+    liur_df = pd.concat(liur_dfs)
+    liur_df = liur_df[liur_df[0].str.len() == 1]
+    liur_df = liur_df.iloc[:, [0, 1]]
+    liur_df.columns = ["char", "code"]
+    liur_df["code"] = liur_df["code"].str.replace(";", "")
+    liur_df["code"] = liur_df["code"].str.replace("~", "")
+    liur_df.sort_values(by="code", key=lambda x: x.str.len(), inplace=True)
+    liur_df.dropna(inplace=True)
+    liur_df.drop_duplicates(inplace=True)
+    liur_df = liur_df[liur_df["code"].str.len() <= 4]
+    return liur_df
+
+
 # %%
 def load_raw_data():
     """Load all raw dictionary data and return as a tuple of dataframes.
@@ -216,6 +241,7 @@ def load_raw_data():
     zhengma_df = load_zhengma()
     huma_df = load_huma()
     xuma_df = load_xuma()
+    liur_df = load_liur()
     return (
         cj_df,
         wubi98_df,
@@ -226,6 +252,7 @@ def load_raw_data():
         zhengma_df,
         huma_df,
         xuma_df,
+        liur_df,
     )
 
 

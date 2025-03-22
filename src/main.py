@@ -20,6 +20,7 @@ t2s = opencc.OpenCC("t2s.json")
     zhengma_df,
     huma_df,
     xuma_df,
+    liur_df,
 ) = load_raw_data()
 cj_df = cj_df.rename(columns={"code": "cj"})
 cj_df = apply_speller_rules(cj_df, "letters2cj", "cj")
@@ -29,6 +30,7 @@ sijiao_df = sijiao_df.rename(columns={"code": "sijiao"})
 zhengma_df = zhengma_df.rename(columns={"code": "zhengma"})
 huma_df = huma_df.rename(columns={"code": "huma"})
 xuma_df = xuma_df.rename(columns={"code": "xuma"})
+liur_df = liur_df.rename(columns={"code": "liur"})
 # %%
 pron_df = pinyin_df.copy()
 pron_df = pron_df.rename(columns={"code": "pinyin"})
@@ -79,6 +81,7 @@ dfs = [
     zhengma_df,
     huma_df,
     xuma_df,
+    liur_df,
     pron_terra_df,
     pron_bopomofo_df,
     pron_flypy_df,
