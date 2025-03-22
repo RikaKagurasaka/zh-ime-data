@@ -4,6 +4,10 @@ from speller import apply_speller_rules
 from load_raw import load_hanzi_chars, load_raw_data
 import pandas as pd
 from functools import reduce
+import opencc
+
+s2t = opencc.OpenCC("s2t.json")
+t2s = opencc.OpenCC("t2s.json")
 
 # %%
 cj_df, wubi98_df, wubi86_df, pinyin_df, moqi_df, sijiao_df, zhengma_df = load_raw_data()
@@ -83,9 +87,19 @@ for df in dfs:
 merged = reduce(
     lambda left, right: pd.merge(left, right, on="char", how="outer"), to_merge
 )
+
 lvl123 = load_hanzi_chars()
 slim_merged = merged[~merged["terra"].isna()]
 slim_merged = pd.merge(slim_merged, lvl123, on="char", how="left")
+# %%
+slim_merged["cht"] = (
+    slim_merged["char"].apply(lambda c: s2t.convert(c) == c).astype(int)
+)
+slim_merged["chs"] = (
+    slim_merged["char"].apply(lambda c: t2s.convert(c) == c).astype(int)
+)
+slim_merged
+# %%
 slim_merged.to_csv(MERGED_DICT, index=False)
 # %%
 import gzip
