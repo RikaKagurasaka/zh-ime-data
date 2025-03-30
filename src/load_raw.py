@@ -97,6 +97,7 @@ def load_pinyin():
     )
     pinyin_df = pinyin_df.iloc[:, [3, 1]]
     pinyin_df.columns = ["char", "code"]
+    pinyin_df = pinyin_df[pinyin_df["char"] != "嗯"]
     pinyin_df["code"] = pinyin_df["code"].str.split(",")
     pinyin_df = pinyin_df.explode("code")
     return pinyin_df
