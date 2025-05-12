@@ -45,7 +45,23 @@ pron_df["abc"] = apply_speller_rules(pron_df["mingyue"], "abc")
 pron_df["ziguang"] = apply_speller_rules(pron_df["mingyue"], "ziguang")
 
 # remove abnormal pron
-abnormal_pinyins = ["ǹ", "ń", "ň", "ê̌", "ḿ", "hng", "ề", "ế", "n", "ê̄"]
+abnormal_pinyins = [
+    "ǹ",
+    "ń",
+    "ň",
+    "ǹg",
+    "ńg",
+    "ňg",
+    "ê̌",
+    "ḿ",
+    "m̄",
+    "m̀",
+    "hng",
+    "ề",
+    "ế",
+    "n",
+    "ê̄",
+]
 pron_df = pron_df[~pron_df["pinyin"].isin(abnormal_pinyins)]
 
 pron_terra_df = pron_df.loc[:, ["char", "terra"]]
@@ -122,7 +138,7 @@ slim_merged.to_csv(MERGED_DICT, index=False)
 # %%
 import gzip
 
-with gzip.open(MERGED_DICT.with_suffix(".gz"), "wt") as f:
+with gzip.open(MERGED_DICT.with_suffix(".gz"), "wt", encoding="utf-8") as f:
     slim_merged.to_csv(f, index=False)
 # %%
 import shutil
