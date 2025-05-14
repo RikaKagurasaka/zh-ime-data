@@ -134,12 +134,12 @@ slim_merged["chs"] = (
 )
 slim_merged
 # %%
-slim_merged.to_csv(MERGED_DICT, index=False)
+slim_merged.to_csv(MERGED_DICT, index=False,lineterminator="\n")
 # %%
 import gzip
 
 with gzip.open(MERGED_DICT.with_suffix(".gz"), "wt", encoding="utf-8") as f:
-    slim_merged.to_csv(f, index=False)
+    slim_merged.to_csv(f, index=False,lineterminator="\n")
 # %%
 import shutil
 
